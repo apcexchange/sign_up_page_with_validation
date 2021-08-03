@@ -20,10 +20,10 @@ class SecondActivity : AppCompatActivity() {
         phoneNumber1 = findViewById(R.id.phone1)
         gender1 = findViewById(R.id.gender1)
 
-        var name = intent.getStringExtra("username")
-        var phone = intent.getStringExtra("phoneNumber")
-        var email = intent.getStringExtra("email")
-        var gender = intent.getStringExtra("gender")
+        val name = intent.getStringExtra("username")
+        val phone = intent.getStringExtra("phoneNumber")
+        val email = intent.getStringExtra("email")
+        val gender = intent.getStringExtra("gender")
 
         username1.text = name
         phoneNumber1.text = phone

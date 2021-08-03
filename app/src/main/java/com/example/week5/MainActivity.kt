@@ -47,11 +47,11 @@ class MainActivity : AppCompatActivity() {
                 val name =username.text.toString().trim()
                 val mail =email.text.toString().trim()
                 val number =phoneNumber.text.toString().trim()
-                val namePattern = Regex("[A-Za-z ]{3,}")
-                val internationalOrLocalNumberFormat = Regex("([+\\d]234)[0-9]{10}|[0][0-9]{10}")
+             val namePattern = Regex("(^[A-Za-z]+\\s[A-Za-z]+$)")
+            val internationalOrLocalNumberFormat = Regex("([+\\d]234)[0-9]{10}|[0][0-9]{10}")
 
             if (!namePattern.matches(name)){
-                username.error = "Name cannot be empty and can only contain alphabets not less than three characters"
+                username.error = "Enter First and Last Name"
                 return@setOnClickListener
             }
             else if (!Patterns.EMAIL_ADDRESS.matcher(mail).matches()){
