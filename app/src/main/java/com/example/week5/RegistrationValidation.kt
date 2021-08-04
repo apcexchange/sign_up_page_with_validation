@@ -19,17 +19,17 @@ object RegistrationValidation {
 
     fun validateName(name:String):Boolean{
         val namePattern = Regex("(^[A-Za-z]+\\s[A-Za-z]+$)")
-
         if (namePattern.matches(name)){
             return true
         }
         return false
     }
 
+
     fun validatesEmail(email:String):Boolean{
         val sortedEmail = email.split(".")
         val lastIndex = sortedEmail[sortedEmail.size-1]
-        if (email.any { it in "@" } && email.any { it in "." } && (lastIndex=="com"|| lastIndex =="dev")){
+        if (email.any { it in "@" } && email.any { it in "." } && (lastIndex=="com"|| lastIndex =="dev"|| lastIndex=="uk")){
             return true
         }
         return false

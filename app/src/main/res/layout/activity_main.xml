@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/main_layout">
 
     <View
         android:id="@+id/header"
@@ -122,7 +123,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Select gender"
         android:background="@drawable/drop_down_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -135,11 +135,10 @@
             android:id="@+id/autoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:enabled="false"
-            android:inputType="text"
+            android:inputType="none"
             android:padding="10dp"
-            android:textStyle="bold"/>
+            android:hint="Select gender"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 

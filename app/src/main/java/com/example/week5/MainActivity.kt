@@ -24,15 +24,13 @@ class MainActivity : AppCompatActivity() {
         var choice = arrayOf("male", "female")
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView)
         val arrayAdapter = ArrayAdapter(this, R.layout.drop_down, choice)
-        autoCompleteTextView.setText(arrayAdapter.getItem(0).toString(), false)
+//        autoCompleteTextView.setText(arrayAdapter.getItem().toString(), false)
         autoCompleteTextView.setAdapter(arrayAdapter)
 
         username = findViewById(R.id.username)
         email = findViewById(R.id.email)
         phoneNumber = findViewById(R.id.phone_number)
         submit = findViewById(R.id.submit)
-
-
 
 
         submit.setOnClickListener {
