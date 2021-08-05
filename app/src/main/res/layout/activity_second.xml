@@ -123,7 +123,7 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_email"
+        app:layout_constraintStart_toStartOf="@id/tv_email"
         app:layout_constraintTop_toTopOf="@+id/tv_email" />
 
     <TextView
