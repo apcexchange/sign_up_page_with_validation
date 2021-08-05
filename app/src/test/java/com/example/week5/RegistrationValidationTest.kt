@@ -12,15 +12,15 @@ class RegistrationValidationTest{
 //    test to confirm the validation of my registration functions
 
     @Test
-    fun empty_Username_should_return_false(){
-        val result = ""
+    fun wrong_Username_format_should_return_false(){
+        val result = "peter peter"
         assertTrue(RegistrationValidation.validateName(result))
     }
 
     @Test
     fun invalid_email_format_should_return_false(){
-        val email = "@acuuytbcgmail.de"
-        assertTrue(RegistrationValidation.validatesEmail(email))
+        val email = "pet@gmailcom"
+        assertFalse(RegistrationValidation.validateEmail(email))
     }
 
     @Test
@@ -28,4 +28,5 @@ class RegistrationValidationTest{
         val phoneNumber = "+2348164955123"
         assertTrue(RegistrationValidation.validatePhoneNumber(phoneNumber))
     }
+
 }
