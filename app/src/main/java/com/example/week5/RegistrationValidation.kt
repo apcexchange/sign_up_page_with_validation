@@ -1,22 +1,25 @@
 package com.example.week5
 
-import android.util.Patterns
-
 object RegistrationValidation {
     /**
-     * the input is not valid if ...
-     * 1. the username is empty
-     * 2. the email is empty
-     * 3. the phone number is empty
-     * 4. if the name is not first name and last
-     * 5. if if the name contains numbers
-     * 6. if the name contains special characters
-     * 7. if the name is less than 3 characters
-     * 8. if the email is not of email format
-     * 9. if the phone number does not start with zero or start with +234
-     * 10. if the lenght of the phone number is not either 11 or 13
+     * the input is valid if ...
+     * 1. the username is not empty
+     * 2. you must enter first and last name
+     * 3. name must not contain numbers or special character
+     *
+     * the email is valid if
+     * 1. the email is not empty
+     * 2. the email starts with alphabets or special characters
+     * 3. the email must contain the '@' symbol followed by another set of alphabets before the '.'
+     *    sign and another set of phrase that are defined here.
+     *
+     *    phone number is valid if
+     * 1. the phone number is not empty
+     * 2. if the phone number start with '08',09,07, and its length is not more than 11
+     * 3. if the number start with +234 and its length its not more than 14
      */
 
+//    function to validate full name
     fun validateName(name:String):Boolean{
         val namePattern = Regex("(^[A-Za-z]+\\s[A-Za-z]+$)")
         if (namePattern.matches(name)){
@@ -29,7 +32,7 @@ object RegistrationValidation {
     fun validatesEmail(email:String):Boolean{
         val sortedEmail = email.split(".")
         val lastIndex = sortedEmail[sortedEmail.size-1]
-        if (email.any { it in "@" } && email.any { it in "." } && (lastIndex=="com"|| lastIndex =="dev"|| lastIndex=="uk")){
+        if (email.any { it in "@" } && email.any { it in "." } && (lastIndex=="com"|| lastIndex =="dev"|| lastIndex=="uk"|| lastIndex=="gov")){
             return true
         }
         return false
@@ -38,8 +41,8 @@ object RegistrationValidation {
 
     fun validatePhoneNumber(numbers:String):Boolean{
 
-      val numformat = Regex("([+\\d]234)[0-9]{10}|[0][0-9]{10}")
-        if (numformat.matches(numbers)){
+      val numFormat = Regex("([+\\d]2347)[0-9]{9}|([+\\d]2348)[0-9]{9}|([+\\d]2349)[0-9]{9}|(09)[0-9]{9}|(08)[0-9]{9}|(07)[0-9][9]")
+        if (numFormat.matches(numbers)){
             return true
         }
         return false

@@ -9,16 +9,18 @@ import org.junit.Test
 
 class RegistrationValidationTest{
 
+//    test to confirm the validation of my registration functions
+
     @Test
     fun empty_Username_should_return_false(){
         val result = ""
-        assertFalse(RegistrationValidation.validateName(result))
+        assertTrue(RegistrationValidation.validateName(result))
     }
 
     @Test
     fun invalid_email_format_should_return_false(){
         val email = "@acuuytbcgmail.de"
-        assertFalse(RegistrationValidation.validatesEmail(email))
+        assertTrue(RegistrationValidation.validatesEmail(email))
     }
 
     @Test

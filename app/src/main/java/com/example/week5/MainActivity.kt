@@ -9,29 +9,36 @@ import android.widget.Button
 import android.widget.EditText
 
 class MainActivity : AppCompatActivity() {
+//    declaring variables that will be used later in the code
     lateinit var autoCompleteTextView: AutoCompleteTextView
     lateinit var username: EditText
     lateinit var email: EditText
     lateinit var phoneNumber: EditText
     lateinit var submit: Button
-//    lateinit var gender: AutoCompleteTextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//  setting up my dropdown gender selection
+//  setting up my dropdown gender selection using auto completeCompleteText method
         var choice = arrayOf("male", "female")
         autoCompleteTextView = findViewById(R.id.autoCompleteTextView)
         val arrayAdapter = ArrayAdapter(this, R.layout.drop_down, choice)
-//        autoCompleteTextView.setText(arrayAdapter.getItem().toString(), false)
         autoCompleteTextView.setAdapter(arrayAdapter)
 
+//        assigning values to my variables
         username = findViewById(R.id.username)
         email = findViewById(R.id.email)
         phoneNumber = findViewById(R.id.phone_number)
         submit = findViewById(R.id.submit)
 
+        /**
+         * collecting my input from user, converts them to Strings and pass them
+         * to the next activity using intent.
+         * this is done by setting onClickListener on my button named "submit"
+         * i also included some conditions that must be met before the setOnclickListener can be triggered
+         */
 
         submit.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
@@ -40,13 +47,19 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("phoneNumber", phoneNumber.text.toString())
             intent.putExtra("gender", autoCompleteTextView.text.toString())
 
+//   i use the .trim() to trim the remove white spaces
             val name = username.text.toString().trim()
             val mail = email.text.toString().trim()
             val number = phoneNumber.text.toString().trim()
 
-
+            /** to pass registrations, it must pass some certain conditions stated in the
+             * you can click on the functions to see the requirements
+             * if the format is not entered correctly, it throws an error message and prompt you to enter again
+             * same applies to other fields like
+             *
+             */
             if (!RegistrationValidation.validateName(name)) {
-                username.error = "Enter First and Last Name"
+                username.error = "please Enter First and Last Name only"
                 return@setOnClickListener
 
             } else if (!RegistrationValidation.validatesEmail(mail)) {
