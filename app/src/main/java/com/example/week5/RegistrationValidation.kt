@@ -29,22 +29,21 @@ object RegistrationValidation {
     }
 
 
-    fun validatesEmail(email:String):Boolean{
-        val sortedEmail = email.split(".")
-        val lastIndex = sortedEmail[sortedEmail.size-1]
-        if (email.any { it in "@" } && email.any { it in "." } && (lastIndex=="com"|| lastIndex =="dev"|| lastIndex=="uk"|| lastIndex=="gov")){
+    fun validateEmail(email:String):Boolean{
+        val emailpattern = Regex("[a-zA-Z-.0-9]+@([a-zA-Z]+)\\.[a-zA-Z]+")
+        if (emailpattern.matches(email)){
             return true
         }
         return false
     }
 
-
     fun validatePhoneNumber(numbers:String):Boolean{
 
-      val numFormat = Regex("([+\\d]2347)[0-9]{9}|([+\\d]2348)[0-9]{9}|([+\\d]2349)[0-9]{9}|(09)[0-9]{9}|(08)[0-9]{9}|(07)[0-9][9]")
+      val numFormat = Regex("([+\\d]2347)[0-9]{9}|([+\\d]2348)[0-9]{9}|([+\\d]2349)[0-9]{9}|(09)[0-9]{9}|(08)[0-9]{9}|(07)[0-9]{9}")
         if (numFormat.matches(numbers)){
             return true
         }
         return false
     }
 }
+
