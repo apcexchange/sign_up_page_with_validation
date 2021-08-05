@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
             val name = username.text.toString().trim()
             val mail = email.text.toString().trim()
             val number = phoneNumber.text.toString().trim()
+            val sex = autoCompleteTextView.text.toString().trim()
 
             /** to pass registrations, it must pass some certain conditions stated in the
              * you can click on the functions to see the requirements
@@ -58,18 +59,26 @@ class MainActivity : AppCompatActivity() {
              * same applies to other fields like
              *
              */
-            if (!RegistrationValidation.validateName(name)) {
-                username.error = "please Enter First and Last Name only"
-                return@setOnClickListener
 
-            } else if (!RegistrationValidation.validatesEmail(mail)) {
-                email.error = "invalid email format"
-                return@setOnClickListener
-            } else if (!RegistrationValidation.validatePhoneNumber(number)) {
-                phoneNumber.error = " enter a number format either local or int'l"
-                return@setOnClickListener
-            } else {
+            if (RegistrationValidation.validateName(name)
+                && RegistrationValidation.validateEmail(mail)
+                && RegistrationValidation.validatePhoneNumber(number)){
                 startActivity(intent)
+            }
+            else {
+                if (!RegistrationValidation.validateName(name)) {
+                    username.error = "please Enter First and Last Name only"
+                    return@setOnClickListener
+                }
+                if (!RegistrationValidation.validateEmail(mail)) {
+                    email.error= " enter a valid email"
+                    return@setOnClickListener
+                }
+                if (!RegistrationValidation.validatePhoneNumber(number)) {
+                phoneNumber.error = " enter a number format either local or int'l format"
+                return@setOnClickListener
+                 }
+
             }
 
         }
@@ -77,3 +86,40 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//if (!RegistrationValidation.validateGender(sex)){
+//    autoCompleteTextView.error = "please chose gender"
+//    return@setOnClickListener
+//}
+
+
+//            if (!RegistrationValidation.validateName(name)) {
+//                username.error = "please Enter First and Last Name only"
+//                return@setOnClickListener
+//
+//            }
+//            if (!RegistrationValidation.validateEmail(mail)) {
+//                email.error = "invalid email format"
+//                return@setOnClickListener
+//            }
+//            if (!RegistrationValidation.validatePhoneNumber(number)) {
+//                phoneNumber.error = " enter a number format either local or int'l format"
+//                return@setOnClickListener
+//            }
+//
+//            else {
+//                startActivity(intent)
+//            }
